@@ -1,0 +1,6 @@
+# ignore all .env files.
+*.env
+# add back example files
+!.env.local
+
+secrets
