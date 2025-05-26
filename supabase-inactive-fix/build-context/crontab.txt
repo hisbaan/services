@@ -1,0 +1,4 @@
+# Run main.py every day at 04:05
+5 4 * * * cd /app && python main.py >> /var/log/cron/cron.log 2>&1
+# An empty line is required at the end of this file for a valid cron file
+

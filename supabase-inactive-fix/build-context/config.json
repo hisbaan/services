@@ -1,0 +1,14 @@
+[
+  {
+    "name": "typist",
+    "supabase_url": "https://qvebwmasldwofvmtugku.supabase.co",
+    "supabase_key_env": "TYPIST_SUPABASE_KEY",
+    "table_name": "keep_alive"
+  },
+  {
+    "name": "item-catalogue",
+    "supabase_url": "https://dfrjjetpabbczqglzdfo.supabase.co",
+    "supabase_key_env": "ITEM_CATALOGUE_SUPABASE_KEY",
+    "table_name": "keep_alive"
+  }
+]
