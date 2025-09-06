@@ -1,0 +1,20 @@
+services:
+  ant-fs:
+    image: typesofants/ant-fs:amd64-latest
+    container_name: ant-fs
+    environment:
+      TYPESOFANTS_SECRET_DIR: /run/secrets
+    restart: always
+    volumes:
+      - /mnt/nas/docker/ant-fs/:/app/fs
+    ports:
+      - 3237:3237
+    secrets:
+      - ant_fs_users.secret
+secrets:
+  ant_fs_users.secret:
+    file: ${SECRETS_DIR}/ant-fs-users.secret
+networks:
+  default:
+    external: true
+    name: labnet
