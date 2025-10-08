@@ -6,7 +6,7 @@ services:
       TYPESOFANTS_SECRET_DIR: /run/secrets
     restart: always
     volumes:
-      - /mnt/nas/docker/ant-fs/:/app/fs
+      - /mnt/nas/docker/ant-fs/fs:/app/fs
     ports:
       - 3237:3237
     secrets:
