@@ -12,7 +12,10 @@ services:
       - /mnt/nas/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
     sysctls:
       - net.ipv4.ip_unprivileged_port_start=0
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.2
+
 networks:
-  default:
+  labnet:
     external: true
-    name: labnet

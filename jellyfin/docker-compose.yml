@@ -7,17 +7,15 @@ services:
     volumes:
       - /mnt/nas/docker/jellyfin/config:/config
       - /mnt/nas/docker/jellyfin/cache:/cache
-      - type: bind
-        source: /mnt/nas/media/
-        target: /media
+      - /mnt/nas/media/media:/media
     restart: always # "unless-stopped"
-    # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.hisbaan.com
-    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.3
 networks:
-  default:
+  labnet:
     external: true
-    name: labnet
