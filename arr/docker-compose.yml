@@ -1,0 +1,117 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    # image: ghcr.io/hotio/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/nas/docker/radarr/config:/config
+      - /mnt/nas/media:/data
+    # ports:
+    #   - 7878:7878
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.5
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    # image: ghcr.io/hotio/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/nas/docker/sonarr/config:/config
+      - /mnt/nas/media:/data
+    # ports:
+    #   - 8989:8989
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.6
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    # image: ghcr.io/hotio/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/nas/docker/bazarr/config:/config
+      - /mnt/nas/media/media:/data/media
+    ports:
+      - 6767:6767
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.7
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    # image: ghcr.io/hotio/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/nas/docker/sabnzbd/config:/config
+      - /mnt/nas/media/usenet:/data/usenet:rw
+    # ports:
+    #   - 8081:8080
+    restart: unless-stopped
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.8
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    # image: ghcr.io/hotio/prowlarr
+    container_name: prowlarr
+    restart: unless-stopped
+    # ports:
+    #   - 9696:9696
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/nas/docker/prowlarr/config:/config
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.9
+
+  jellyseerr:
+    image: ghcr.io/fallenbagel/jellyseerr:latest
+    init: true
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=America/Toronto
+      # - PORT=5055 #optional
+    # ports:
+    #   - 5055:5055
+    volumes:
+      - /mnt/nas/docker/jellyseerr/config:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.10
+
+networks:
+  labnet:
+    external: true
+
