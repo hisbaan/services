@@ -111,6 +111,22 @@ services:
       labnet:
         ipv4_address: 172.20.0.10
 
+  autoscan:
+    container_name: autoscan
+    image: ghcr.io/niniyas/autoscan:latest
+    volumes:
+      - /mnt/nas/docker/autoscan/config:/config
+    # ports:
+    #   - "3468:3468/tcp"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Etc/UTC
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.12
+
 networks:
   labnet:
     external: true
