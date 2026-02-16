@@ -18,6 +18,5 @@ secrets:
   ant_fs_users.secret:
     file: ${SECRETS_DIR}/ant-fs-users.secret
 networks:
-  default:
+  labnet:
     external: true
-    name: labnet
