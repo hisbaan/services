@@ -2,7 +2,7 @@ services:
   supabase-inactive-fix:
     build:
       context: build-context
-    restart: "always"
+    restart: always
     environment:
       TYPIST_SUPABASE_KEY: ${TYPIST_SUPABASE_KEY}
       ITEM_CATALOGUE_SUPABASE_KEY: ${ITEM_CATALOGUE_SUPABASE_KEY}

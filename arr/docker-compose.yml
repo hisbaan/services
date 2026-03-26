@@ -123,6 +123,7 @@ services:
       - PGID=1000
       - UMASK=002
       - TZ=Etc/UTC
+    restart: unless-stopped
     networks:
       labnet:
         ipv4_address: 172.20.0.12

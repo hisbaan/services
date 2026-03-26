@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:18
+    restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -16,6 +17,7 @@ services:
         ipv4_address: 172.20.0.14
   miniflux:
     image: miniflux/miniflux:latest
+    restart: always
     depends_on:
       db:
         condition: service_healthy

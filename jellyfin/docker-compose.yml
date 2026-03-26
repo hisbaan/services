@@ -8,7 +8,7 @@ services:
       - /mnt/nas/docker/jellyfin/config:/config
       - /mnt/nas/docker/jellyfin/cache:/cache
       - /mnt/nas/media/media:/media
-    restart: always # "unless-stopped"
+    restart: always
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.hisbaan.com
     extra_hosts:
