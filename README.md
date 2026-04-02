@@ -12,4 +12,5 @@ This repo contains my docker compose files for the various services I host on my
 | nextcloud             | personal cloud storage and suite                                               |
 | nginx-proxy-manager   | reverse proxy and management UI                                                |
 | supabase-inactive-fix | keep Supabase databases alive without traffic                                  |
+| wallabag              | self-hosted read-it-later app                                                  |
 | wg-easy               | wireguard VPN and management UI                                                |
