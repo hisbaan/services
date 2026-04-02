@@ -27,8 +27,9 @@ services:
       wallabag-redis:
         condition: service_healthy
     networks:
-      labnet:
-        ipv4_address: 172.20.0.15
+      # labnet:
+      #   ipv4_address: 172.20.0.15
+      - labnet
   wallabag-db:
     image: postgres:18-alpine
     restart: unless-stopped
@@ -44,8 +45,9 @@ services:
       start_period: 30s
       timeout: 3s
     networks:
-      labnet:
-        ipv4_address: 172.20.0.16
+      # labnet:
+      #   ipv4_address: 172.20.0.16
+      - labnet
   wallabag-redis:
     image: redis:alpine
     restart: unless-stopped
@@ -54,8 +56,9 @@ services:
       interval: 20s
       timeout: 3s
     networks:
-      labnet:
-        ipv4_address: 172.20.0.17
+      # labnet:
+      #   ipv4_address: 172.20.0.17
+      - labnet
 
 networks:
   labnet:

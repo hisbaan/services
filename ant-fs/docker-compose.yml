@@ -12,8 +12,9 @@ services:
     secrets:
       - ant_fs_users.secret
     networks:
-      labnet:
-        ipv4_address: 172.20.0.4
+      # labnet:
+      #   ipv4_address: 172.20.0.4
+      - labnet
 secrets:
   ant_fs_users.secret:
     file: ${SECRETS_DIR}/ant-fs-users.secret

@@ -14,8 +14,9 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      labnet:
-        ipv4_address: 172.20.0.3
+      # labnet:
+      #   ipv4_address: 172.20.0.3
+      - labnet
 networks:
   labnet:
     external: true

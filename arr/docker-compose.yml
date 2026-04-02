@@ -14,8 +14,9 @@ services:
     # ports:
     #   - 7878:7878
     networks:
-      labnet:
-        ipv4_address: 172.20.0.5
+      # labnet:
+      #   ipv4_address: 172.20.0.5
+      - labnet
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
@@ -32,8 +33,9 @@ services:
     # ports:
     #   - 8989:8989
     networks:
-      labnet:
-        ipv4_address: 172.20.0.6
+      # labnet:
+      #   ipv4_address: 172.20.0.6
+      - labnet
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -50,8 +52,9 @@ services:
     ports:
       - 6767:6767
     networks:
-      labnet:
-        ipv4_address: 172.20.0.7
+      # labnet:
+      #   ipv4_address: 172.20.0.7
+      - labnet
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
@@ -68,8 +71,9 @@ services:
     #   - 8081:8080
     restart: unless-stopped
     networks:
-      labnet:
-        ipv4_address: 172.20.0.8
+      # labnet:
+      #   ipv4_address: 172.20.0.8
+      - labnet
 
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -85,8 +89,9 @@ services:
     volumes:
       - /mnt/nas/docker/prowlarr/config:/config
     networks:
-      labnet:
-        ipv4_address: 172.20.0.9
+      # labnet:
+      #   ipv4_address: 172.20.0.9
+      - labnet
 
   seerr:
     image: ghcr.io/seerr-team/seerr:latest
@@ -108,8 +113,9 @@ services:
       retries: 3
     restart: unless-stopped
     networks:
-      labnet:
-        ipv4_address: 172.20.0.10
+      # labnet:
+      #   ipv4_address: 172.20.0.10
+      - labnet
 
   autoscan:
     container_name: autoscan
@@ -125,10 +131,10 @@ services:
       - TZ=Etc/UTC
     restart: unless-stopped
     networks:
-      labnet:
-        ipv4_address: 172.20.0.12
+      # labnet:
+      #   ipv4_address: 172.20.0.12
+      - labnet
 
 networks:
   labnet:
     external: true
-

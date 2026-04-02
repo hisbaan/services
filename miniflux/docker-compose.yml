@@ -13,8 +13,9 @@ services:
       interval: 10s
       start_period: 30s
     networks:
-      labnet:
-        ipv4_address: 172.20.0.14
+      # labnet:
+      #   ipv4_address: 172.20.0.14
+      - labnet
   miniflux:
     image: miniflux/miniflux:latest
     restart: always
@@ -28,8 +29,9 @@ services:
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     networks:
-      labnet:
-        ipv4_address: 172.20.0.13
+      # labnet:
+      #   ipv4_address: 172.20.0.13
+      - labnet
 
 networks:
   labnet:
