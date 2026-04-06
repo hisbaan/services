@@ -1,0 +1,33 @@
+. {
+    hosts {
+      192.168.18.2 ip.hisbaan.com
+      192.168.18.2 ddns.hisbaan.com
+
+			192.168.18.2 ant.hisbaan.com 
+			192.168.18.2 bazarr.hisbaan.com 
+			192.168.18.2 bluebubbles.hisbaan.com 
+			192.168.18.2 home.hisbaan.com 
+			192.168.18.2 jellyfin.hisbaan.com 
+			192.168.18.2 miniflux.hisbaan.com 
+			192.168.18.2 nextcloud.hisbaan.com 
+			192.168.18.2 prowlarr.hisbaan.com 
+			192.168.18.2 radarr.hisbaan.com 
+			192.168.18.2 sabnzbd.hisbaan.com 
+			192.168.18.2 seerr.hisbaan.com 
+			192.168.18.2 sonarr.hisbaan.com 
+			192.168.18.2 wallabag.hisbaan.com 
+			192.168.18.2 wg.hisbaan.com 
+
+			192.168.18.2 api.recplus.hisbaan.com 
+ 	    192.168.18.2 admin.recplus.hisbaan.com 
+			192.168.18.2 recplus.hisbaan.com 
+
+      fallthrough
+    }
+
+    forward . 1.1.1.1 1.0.0.1
+
+    cache 300
+    log
+    errors
+}
