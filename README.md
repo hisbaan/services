@@ -8,6 +8,7 @@ This repo contains my docker compose files for the various services I host on my
 | arr                   | \*arr stack                                                                    |
 | auth                  | self-made IdP. See [hisbaan/auth](https://github.com/hisbaan/auth)             |
 | coredns               | dns server mostly used for split-horizon/hairpinning                           |
+| forgejo               | git server/web interface                                                       |
 | home-assistant        | personal home automation suite                                                 |
 | jellyfin              | media server                                                                   |
 | miniflux              | rss feed manager                                                               |

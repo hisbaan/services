@@ -1,0 +1,33 @@
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:15
+    container_name: forgejo
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: unless-stopped
+    networks:
+      - labnet
+    volumes:
+      - /mnt/nas/docker/forgejo/data:/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - '3000:3000'
+      - '222:22'
+  forgejo-db:
+    image: postgres
+    container_name: forgejo-db
+    restart: unless-stopped
+    shm_size: 128mb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=forgejo
+    networks:
+      - labnet
+    volumes:
+      - /mnt/nas/docker/forgejo/db:/var/lib/postgresql
+
+networks:
+  labnet:
+    external: true
