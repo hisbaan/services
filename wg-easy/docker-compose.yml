@@ -7,13 +7,11 @@ services:
     container_name: wg-easy
     networks:
       - labnet
-      # labnet:
-      #   ipv4: 172.20.0.11
     volumes:
       - /mnt/nas/docker/wg-easy/wireguard:/etc/wireguard
       - /run/current-system/kernel-modules/lib/modules:/lib/modules:ro
     ports:
-      - "5000:51820/udp"
+      - 5000:51820/udp
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
