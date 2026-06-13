@@ -1,0 +1,22 @@
+services:
+  ha-location-bot:
+    image: ghcr.io/hisbaan/ha-location:latest
+    container_name: ha-location-bot
+    restart: unless-stopped
+    environment:
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_APPLICATION_ID=${DISCORD_APPLICATION_ID}
+      - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
+      - DATABASE_PATH=/data/ha-location-bot.db
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - MAP_TILE_URL_TEMPLATE=${MAP_TILE_URL_TEMPLATE}
+      - MAP_TILE_API_KEY=${MAP_TILE_API_KEY}
+      - MAP_TILE_USER_AGENT=${MAP_TILE_USER_AGENT}
+      - MAP_DEFAULT_ZOOM=${MAP_DEFAULT_ZOOM}
+    volumes:
+      - /mnt/nas/docker/ha-location/data:/data
+    networks:
+      - labnet
+networks:
+  labnet:
+    external: true

@@ -9,6 +9,7 @@ This repo contains my docker compose files for the various services I host on my
 | auth                  | self-made IdP. See [hisbaan/auth](https://github.com/hisbaan/auth)             |
 | coredns               | dns server mostly used for split-horizon/hairpinning                           |
 | forgejo               | git server/web interface                                                       |
+| ha-location           | a discord bot to pull my location from home home assistant                     |
 | home-assistant        | personal home automation suite                                                 |
 | jellyfin              | media server                                                                   |
 | miniflux              | rss feed manager                                                               |
