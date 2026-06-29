@@ -1,0 +1,22 @@
+services:
+  ant-archive-storage:
+    image: typesofants/ant-archive-storage:x86_64-latest
+    container_name: ant-archive-storage
+    restart: unless-stopped
+    environment:
+      TYPESOFANTS_SECRET_DIR: /run/secrets
+      PORT: 3253
+      METRICS_PORT: 3254
+      PERSIST_DIR: /app/persist-dir
+    volumes:
+      - /mnt/nas/docker/ant-archive-storage/data:/app/persist-dir
+    secrets:
+      - ant_archive_storage_auth
+    networks:
+      - labnet
+secrets:
+  ant_archive_storage_auth:
+    file: ./ant-archive-storage-auth.secret
+networks:
+  labnet:
+    external: true

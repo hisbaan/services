@@ -4,4 +4,4 @@
 !.env.local
 
 secrets
-ant-fs-users.secret
+ant-archive-storage-auth.secret
