@@ -32,6 +32,7 @@ services:
       - FROM_EMAIL=auth@mail.hisbaan.com
       - SUPPORT_EMAIL=support@mail.hisbaan.com
       - SERVICE_NAME=auth.hisbaan.com
+      - CORS_ALLOWED_ORIGINS=https://auth.hisbaan.com
     volumes:
       - /mnt/nas/docker/auth/keys:/keys
     networks:
