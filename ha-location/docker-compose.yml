@@ -1,6 +1,6 @@
 services:
   ha-location-bot:
-    image: ghcr.io/hisbaan/ha-location:latest
+    image: ghcr.io/hisbaan/ha-location/bot:latest
     container_name: ha-location-bot
     restart: unless-stopped
     environment:
@@ -14,7 +14,22 @@ services:
       - MAP_TILE_USER_AGENT=${MAP_TILE_USER_AGENT}
       - MAP_DEFAULT_ZOOM=${MAP_DEFAULT_ZOOM}
     volumes:
-      - /mnt/nas/docker/ha-location/data:/data
+      - /mnt/nas/docker/ha-location/bot:/data
+    networks:
+      - labnet
+  ha-location-api:
+    image: ghcr.io/hisbaan/ha-location/api:latest
+    container_name: ha-location-api
+    restart: unless-stopped
+    environment:
+      - DATABASE_PATH=/data/api.db
+      - ENCRYPTION_KEY=${API_ENCRYPTION_KEY}
+      - OIDC_ISSUER=https://api.auth.hisbaan.com
+      - OIDC_AUDIENCE=${API_OIDC_AUDIENCE}
+      - WEB_ORIGIN=https://whereis.hisbaan.com
+      - PORT=3001
+    volumes:
+      - /mnt/nas/docker/ha-location/api:/data
     networks:
       - labnet
 networks:
