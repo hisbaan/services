@@ -32,6 +32,28 @@ services:
       - /mnt/nas/docker/ha-location/api:/data
     networks:
       - labnet
+  ha-location-proxy:
+    image: ghcr.io/hisbaan/ha-location/proxy:latest
+    container_name: ha-location-proxy
+    restart: unless-stopped
+    environment:
+      HA_BASE_URL: https://home.hisbaan.com
+      HA_TOKEN: ${PROXY_HA_TOKEN}
+      ALLOWED_ENTITIES: person.hisbaan,person.kat,person.leon
+      CLIENT_ORIGIN: https://whereis.hisbaan.com
+      SIGNING_SECRET: ${PROXY_SIGNING_SECRET}
+      AUTHORIZE_PASSWORD_HASH: ${PROXY_AUTHORIZE_PASSWORD_HASH}
+      GRANTS_PATH: /data/grants.json
+    volumes:
+      - /mnt/nas/docker/ha-location/proxy:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3002/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - labnet
 networks:
   labnet:
     external: true
