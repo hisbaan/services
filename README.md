@@ -7,6 +7,7 @@ This repo contains my docker compose files for the various services I host on my
 | ant-fs                | backup server for [typesofants.org](https://github.com/kaspar-p/types-of-ants) |
 | arr                   | \*arr stack                                                                    |
 | auth                  | self-made IdP. See [hisbaan/auth](https://github.com/hisbaan/auth)             |
+| bookorbit             | ebook management and syncing                                                   |
 | coredns               | dns server mostly used for split-horizon/hairpinning                           |
 | forgejo               | git server/web interface                                                       |
 | ha-location           | a discord bot to pull my location from home home assistant                     |
