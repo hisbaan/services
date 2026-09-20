@@ -4,6 +4,9 @@ services:
     container_name: jellyfin
     # user: hisbaan:gid
     # network_mode: "host"
+    devices:
+      # intel igpu
+      - /dev/dri/renderD129:/dev/dri/renderD129
     volumes:
       - /mnt/nas/docker/jellyfin/config:/config
       - /mnt/nas/docker/jellyfin/cache:/cache
@@ -14,8 +17,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      # labnet:
-      #   ipv4_address: 172.20.0.3
       - labnet
 networks:
   labnet:
