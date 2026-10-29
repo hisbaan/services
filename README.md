@@ -8,6 +8,7 @@ This repo contains my docker compose files for the various services I host on my
 | arr                   | \*arr stack                                                                    |
 | auth                  | self-made IdP. See [hisbaan/auth](https://github.com/hisbaan/auth)             |
 | bookorbit             | ebook management and syncing                                                   |
+| caddy-lan             | LAN/WireGuard-only reverse proxy (not port-forwarded)                          |
 | coredns               | dns server mostly used for split-horizon/hairpinning                           |
 | forgejo               | git server/web interface                                                       |
 | ha-location           | a discord bot to pull my location from home home assistant                     |

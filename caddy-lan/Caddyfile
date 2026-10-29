@@ -1,0 +1,21 @@
+{
+	email hisbaan@gmail.com
+}
+
+(cloudflare_dns) {
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		# bypass coredns so its cache doesn't delay the propagation check
+		resolvers 1.1.1.1
+	}
+}
+
+lab.herdr.hisbaan.com {
+	import cloudflare_dns
+	reverse_proxy 192.168.18.2:7317
+}
+
+affiniti.herdr.hisbaan.com {
+	import cloudflare_dns
+	reverse_proxy 192.168.18.8:7317
+}

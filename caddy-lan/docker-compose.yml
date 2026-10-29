@@ -1,0 +1,23 @@
+# LAN/WireGuard-only reverse proxy. Bound to 192.168.18.251, which the router
+# does not forward, so nothing here is reachable from the internet.
+services:
+  caddy:
+    build: .
+    container_name: caddy-lan
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '192.168.18.251:80:80'
+      - '192.168.18.251:443:443'
+      - '192.168.18.251:443:443/udp'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /mnt/nas/docker/caddy-lan/data:/data
+      - /mnt/nas/docker/caddy-lan/config:/config
+    networks:
+      - labnet
+
+networks:
+  labnet:
+    external: true
