@@ -10,12 +10,12 @@
 	}
 }
 
-lab.herdr.hisbaan.com {
+herdr.lab.hisbaan.com {
 	import cloudflare_dns
 	reverse_proxy 192.168.18.2:7317
 }
 
-affiniti.herdr.hisbaan.com {
+herdr.affiniti.hisbaan.com {
 	import cloudflare_dns
 	reverse_proxy 192.168.18.8:7317
 }

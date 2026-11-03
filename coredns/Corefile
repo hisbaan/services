@@ -23,8 +23,8 @@
         192.168.18.2 wallabag.hisbaan.com 
         192.168.18.2 wg.hisbaan.com 
         
-        192.168.18.251 lab.herdr.hisbaan.com
-        192.168.18.251 affiniti.herdr.hisbaan.com
+        192.168.18.251 herdr.lab.hisbaan.com
+        192.168.18.251 herdr.affiniti.hisbaan.com
 
         fallthrough
     }
