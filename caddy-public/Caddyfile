@@ -1,0 +1,133 @@
+{
+	email hisbaan@gmail.com
+}
+
+# npm sent X-Real-IP on every host; caddy only sets X-Forwarded-* by default
+(proxy) {
+	reverse_proxy {args[0]} {
+		header_up X-Real-IP {remote_host}
+	}
+}
+
+(hsts) {
+	header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+}
+
+# media
+
+jellyfin.hisbaan.com {
+	import hsts
+	header {
+		X-Frame-Options SAMEORIGIN
+		X-XSS-Protection 0
+		X-Content-Type-Options nosniff
+	}
+	reverse_proxy jellyfin:8096 {
+		header_up X-Real-IP {remote_host}
+		header_up X-Forwarded-Protocol {scheme}
+		# stream without buffering
+		flush_interval -1
+	}
+}
+
+seerr.hisbaan.com {
+	import hsts
+	import proxy seerr:5055
+}
+
+sonarr.hisbaan.com {
+	import hsts
+	import proxy sonarr:8989
+}
+
+radarr.hisbaan.com {
+	import hsts
+	import proxy radarr:7878
+}
+
+bazarr.hisbaan.com {
+	import hsts
+	import proxy bazarr:6767
+}
+
+prowlarr.hisbaan.com {
+	import hsts
+	import proxy prowlarr:9696
+}
+
+sabnzbd.hisbaan.com {
+	import hsts
+	import proxy sabnzbd:8080
+}
+
+# home
+
+home.hisbaan.com {
+	header Strict-Transport-Security "max-age=63072000; preload"
+	# home assistant runs with host networking
+	import proxy 172.20.0.1:8123
+}
+
+homeproxy.hisbaan.com {
+	import hsts
+	import proxy ha-location-proxy:3002
+}
+
+api.whereis.hisbaan.com {
+	import hsts
+	import proxy ha-location-api:3001
+}
+
+# files and reading
+
+nextcloud.hisbaan.com {
+	# nextcloud aio's apache runs with host networking
+	import proxy 172.20.0.1:11000
+}
+
+miniflux.hisbaan.com {
+	import hsts
+	import proxy miniflux:8080
+}
+
+wallabag.hisbaan.com {
+	import proxy wallabag:80
+}
+
+bookorbit.hisbaan.com {
+	import proxy bookorbit:3000
+}
+
+# infra
+
+git.hisbaan.com {
+	import hsts
+	import proxy forgejo:3000
+}
+
+wg.hisbaan.com {
+	import proxy wg-easy:80
+}
+
+api.auth.hisbaan.com {
+	import hsts
+	import proxy auth-api:3000
+}
+
+ant-archive-storage.hisbaan.com {
+	import hsts
+	import proxy ant-archive-storage:3253
+}
+
+prometheus.ant-archive-storage.hisbaan.com {
+	import hsts
+	import proxy ant-archive-storage:3254
+}
+
+# misc
+
+bluebubbles.hisbaan.com {
+	import hsts
+	import proxy 192.168.18.4:1234
+}
+

@@ -1,0 +1,20 @@
+services:
+  caddy:
+    image: caddy:2
+    container_name: caddy-public
+    restart: unless-stopped
+    ports:
+      - '192.168.18.2:80:80'
+      - '192.168.18.2:443:443'
+      - '192.168.18.2:443:443/udp'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /mnt/nas/docker/caddy-public/data:/data
+      - /mnt/nas/docker/caddy-public/config:/config
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.2
+
+networks:
+  labnet:
+    external: true
