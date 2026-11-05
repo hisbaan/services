@@ -25,6 +25,7 @@
         
         192.168.18.251 herdr.lab.hisbaan.com
         192.168.18.251 herdr.affiniti.hisbaan.com
+        192.168.18.251 t3code.lab.hisbaan.com
 
         fallthrough
     }

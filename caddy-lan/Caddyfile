@@ -15,6 +15,11 @@ herdr.lab.hisbaan.com {
 	reverse_proxy 192.168.18.2:7317
 }
 
+t3code.lab.hisbaan.com {
+	import cloudflare_dns
+	reverse_proxy 192.168.18.2:3773
+}
+
 herdr.affiniti.hisbaan.com {
 	import cloudflare_dns
 	reverse_proxy 192.168.18.8:7317
