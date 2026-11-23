@@ -28,6 +28,9 @@
         192.168.18.251 herdr.affiniti.hisbaan.com
         192.168.18.251 t3code.lab.hisbaan.com
 
+        192.168.18.2 lab.hisbaan.com
+        192.168.18.6 affiniti.hisbaan.com
+
         fallthrough
     }
 
