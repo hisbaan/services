@@ -26,6 +26,8 @@
         
         192.168.18.251 herdr.lab.hisbaan.com
         192.168.18.251 herdr.affiniti.hisbaan.com
+        192.168.18.251 ovis.lab.hisbaan.com
+        192.168.18.251 ovis.affiniti.hisbaan.com
         192.168.18.251 t3code.lab.hisbaan.com
 
         192.168.18.2 lab.hisbaan.com
